@@ -1,29 +1,41 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./TicTacToe.css"
 
 const TicTacToe = () => {
 
-    const Cell = () =>{
-        return <td>-</td>
+    const [turn, setTurn] = useState("x")
+    
+    const handleClick = (num) =>{
+            if(turn == "x"){
+                setTurn('o')
+            }else{
+                setTurn("x")
+            }
+        }
+
+    const Cell = ({num}) =>{
+        return <td onClick={() => handleClick(num)}>-</td>
     }
   return (
     <div className='container'>
+
+        <p>{turn}</p>
         <table>
             <tbody>
                 <tr>
-                    <Cell />
-                    <Cell />
-                    <Cell />
+                    <Cell num={0} />
+                    <Cell num={1} />
+                    <Cell num={2} />
                 </tr>
                 <tr>
-                    <Cell />
-                    <Cell />
-                    <Cell />
+                    <Cell num={3} />
+                    <Cell num={4} />
+                    <Cell num={5} />
                 </tr>
                 <tr>
-                    <Cell />
-                    <Cell />
-                    <Cell />
+                    <Cell num={6} />
+                    <Cell num={7} />
+                    <Cell num={8} />
                 </tr>
             </tbody>
         </table>
